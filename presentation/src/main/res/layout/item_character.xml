@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="result"
+            type="com.marvel.domain.entity.Result" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        app:cardBackgroundColor="@color/main"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="100dp"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="20dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/itemCharacterImage"
+                imgUrl="@{result.thumbnail.path + '.' + result.thumbnail.extension}"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/itemCharacterResultLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/itemCharacterBookMark"
+                app:layout_constraintStart_toEndOf="@id/itemCharacterImage"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/itemCharacterUrls"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/urls + ':' + result.urls.size()}"
+                    android:textColor="@color/sub"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/itemCharacterComics"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/comics + ':' + result.comics.returned}"
+                    android:textColor="@color/sub"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/itemCharacterUrls" />
+
+                <TextView
+                    android:id="@+id/itemCharacterStories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/stories + ':' + result.stories.returned}"
+                    android:textColor="@color/sub"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/itemCharacterComics" />
+
+                <TextView
+                    android:id="@+id/itemCharacterEvents"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/events + ':' + result.events.returned}"
+                    android:textColor="@color/sub"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/itemCharacterSeries" />
+
+                <TextView
+                    android:id="@+id/itemCharacterSeries"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/series + ':' + result.series.returned}"
+                    android:textColor="@color/sub"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/itemCharacterStories" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/itemCharacterBookMark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@{result.isBookMark ? @color/teal_200 : @color/sub}"
+                android:gravity="center"
+                android:insetLeft="20dp"
+                android:insetTop="20dp"
+                android:insetRight="20dp"
+                android:insetBottom="20dp"
+                android:text="@string/bookmark"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/itemCharacterResultLayout"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

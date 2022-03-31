@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@+id/characterFragment">
+
+    <fragment
+        android:id="@+id/characterFragment"
+        android:name="com.marvel.presentation.view.character.CharacterFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_character">
+
+        <action
+            android:id="@+id/actionDetailFragment"
+            app:destination="@+id/navCharacterDetail" />
+
+        <action
+            android:id="@+id/actionBookMarkFragment"
+            app:destination="@+id/navBookMark" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navBookMark"
+        android:name="com.marvel.presentation.view.bookmark.BookMarkFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_book_mark" />
+
+    <fragment
+        android:id="@+id/navCharacterDetail"
+        android:name="com.marvel.presentation.view.detail.CharacterDetailFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_character_detail">
+
+        <argument
+            android:name="id"
+            android:defaultValue="-1"
+            app:argType="integer" />
+
+        <action
+            android:id="@+id/actionCharacterDetailUrl"
+            app:destination="@+id/navCharacterUrl" />
+
+        <action
+            android:id="@+id/actionCharacterDetailItem"
+            app:destination="@+id/navCharacterItem" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navCharacterUrl"
+        android:name="com.marvel.presentation.view.detail.url.CharacterUrlFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_character_url" />
+
+    <fragment
+        android:id="@+id/navCharacterItem"
+        android:name="com.marvel.presentation.view.detail.item.CharacterItemFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_character_item">
+
+        <argument
+            android:name="itemType"
+            android:defaultValue="COMICS"
+            app:argType="com.marvel.presentation.view.detail.ItemType" />
+    </fragment>
+</navigation>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MarvelSample</string>
+    <string name="home">홈</string>
+    <string name="bookmark">즐겨찾기</string>
+    <string name="bookmark_delete">삭제</string>
+    <string name="thumbnail">THUMBNAIL</string>
+    <string name="urls">URLS</string>
+    <string name="comics">COMICS</string>
+    <string name="stories">STORIES</string>
+    <string name="events">EVENTS</string>
+    <string name="series">SERIES</string>
+    <string name="end">END</string>
+    <string name="download_start">Download Start</string>
+    <string name="info">Info</string>
+    <string name="exit_desc">다시 실행 해주세요.</string>
+    <string name="ok">OK</string>
+</resources>

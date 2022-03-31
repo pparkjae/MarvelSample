@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.marvel.presentation.view.detail.item.ItemTextType" />
+
+        <variable
+            name="itemType"
+            type="com.marvel.presentation.view.detail.ItemType" />
+
+        <variable
+            name="vm"
+            type="com.marvel.presentation.view.detail.CharacterDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="20dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/characterItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.resultState.data.name + ` - ` + itemType}"
+            android:textColor="@color/sub"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/characterItemAvailable"
+            itemTextType="@{ItemTextType.AVAILABLE}"
+            itemType="@{itemType}"
+            resultStatus="@{vm.resultState}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textColor="@color/sub"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/characterItemName" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/characterItemCollectionURI"
+            itemTextType="@{ItemTextType.COLLECTION_URL}"
+            itemType="@{itemType}"
+            resultStatus="@{vm.resultState}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/sub"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/characterItemAvailable" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/characterItemReturned"
+            itemTextType="@{ItemTextType.RETURNED}"
+            itemType="@{itemType}"
+            resultStatus="@{vm.resultState}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/sub"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/characterItemCollectionURI" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/characterItemRecyclerView"
+            itemType="@{itemType}"
+            result="@{vm.resultState}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/characterItemReturned"
+            tools:listitem="@layout/item_character_item" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

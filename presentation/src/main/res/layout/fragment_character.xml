@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.marvel.domain.entity.ResultStatus" />
+
+        <variable
+            name="vm"
+            type="com.marvel.presentation.view.character.CharacterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.marvel.presentation.custom.PagingRecyclerView
+            android:id="@+id/characterRecyclerView"
+            items="@{vm.resultState}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingTop="15dp"
+            android:paddingHorizontal="15dp"
+            android:scrollbars="vertical"
+            app:endOfScroll="@{vm.isEnd}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/characterEndTextView"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_character" />
+
+        <ProgressBar
+            android:id="@+id/characterProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="@{null}"
+            android:padding="150dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showProgressBar="@{vm.resultState instanceof ResultStatus.Loading}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/characterEndTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/end"
+            android:background="@color/main"
+            android:textColor="@color/sub"
+            android:gravity="center"
+            android:visibleIf="@{vm.isEnd()}"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

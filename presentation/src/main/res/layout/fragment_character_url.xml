@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.marvel.presentation.view.detail.CharacterDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <WebView
+            android:id="@+id/characterWebView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            bindWebView="@{vm.resultState}"/>
+
+        <ProgressBar
+            android:id="@+id/characterUrlProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="@{null}"
+            android:padding="150dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
