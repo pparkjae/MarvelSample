@@ -1,7 +1,6 @@
 # MarvelSample
-# ListSample
 
-Kakao Book Api 사용
+Marvel Api 사용
 
 
 Android Clean Architecture 기반 MVVM
